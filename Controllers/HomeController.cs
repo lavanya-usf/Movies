@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Movies.Models;
 using System.Diagnostics;
 
@@ -14,7 +15,7 @@ namespace Movies.Controllers
         }
         public IActionResult Index()
         {
-            var movies = Context.Movies.OrderBy(m => m.Name).ToList();
+            var movies = Context.Movies.Include(m=> m.Genre).OrderBy(m => m.Name).ToList();
             return View(movies);
         }
 

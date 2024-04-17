@@ -18,9 +18,12 @@
         <label asp-for="GenreId" class="form-label">Genre</label>
         <select asp-for="GenreId" class="form-control">
             <option value="">-- Select Genre --</option>
-            @foreach (var genre in ViewBag.Genres)
+            @if (ViewBag.Genres != null)
             {
-                <option value="@genre.GenreId">@genre.Name</option>
+                foreach (var genre in ViewBag.Genres)
+                {
+                    <option value="@genre.GenreId">@genre.Name</option>
+                }
             }
         </select>
     </div>
